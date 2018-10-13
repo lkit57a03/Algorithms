@@ -3,7 +3,7 @@
 int numOfElement = 0;
 
 int * generateRandomArray(int startFrom,int endTo){
-    numOfElement = endTo - startFrom;
+    numOfElement = endTo - startFrom + 1;
     int * randomArray = malloc(sizeof(int) * numOfElement);
     srand(time(NULL));
     for(int i = 0;i < numOfElement;i++){
