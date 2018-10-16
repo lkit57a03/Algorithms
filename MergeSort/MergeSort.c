@@ -33,10 +33,3 @@ void merge_sort(int * list,int start,int end){
         merge(list,start,middle,end);
     }
 }
-int main(int argv,char** argc){
-    int * list = generateRandomArray(1,SIZE);
-    printAllElem(list);
-    printf("\nSorted Array\n");
-    merge_sort(list,1,SIZE);
-    printAllElem(list);
-}

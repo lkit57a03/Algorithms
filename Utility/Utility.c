@@ -15,7 +15,7 @@ int * generateRandomArray(int startFrom,int endTo){
     return randomArray;
 }
 
-void printAllElem(int * list){
+void printAllElem(int * list,int numOfElement){
     if(numOfElement  == 0){
         printf("Please Enter the Size of the Element.");
         return;
@@ -30,14 +30,37 @@ int getARandomNumberFromTheList(int * list){
     srand(time(NULL));
     int randomInt = random()%numOfElement;
 
-    printf("Taking Random Number from Place %d which is %d",randomInt,list[randomInt]);
+    // printf("Taking Random Number from Place %d which is %d",randomInt,list[randomInt]);
 
     return list[randomInt];
 }
-
+int getARandomNumber(int size){
+    srand(time(NULL));
+    int randomInt = random()%size;
+    return randomInt;
+}
 
 void swap(int * list,int i, int j){
     int temp = list[i];
     list[i]  = list[j];
     list[j]  = temp;
+}
+
+
+int * generateOddEvenValues(int numberOfElem,bool Odd){
+    int * arr = malloc(numberOfElem * sizeof(int));
+    if(Odd == true){
+        int k = 1;
+        for(int i = 0;i < numberOfElem;i++){
+            arr[i] = k;
+            k += 2;
+        }
+    }else {
+        int k = 2;
+        for(int i = 0;i < numberOfElem;i++){
+            arr[i] = k;
+            k += 2;
+        }
+    }
+    return arr;
 }
