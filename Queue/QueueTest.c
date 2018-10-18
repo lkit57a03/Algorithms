@@ -1,6 +1,6 @@
 #include"Queue.h"
 int main(){
-    Queue * queue = init(50);
+    Queue * queue = init(5);
     Enqueue(queue,20);
     Enqueue(queue,30);
     Enqueue(queue,50);

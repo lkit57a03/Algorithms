@@ -3,7 +3,7 @@
 #include<malloc.h>
 #include<time.h>
 #include<stdbool.h>
-int * generateRandomArray(int numOfElement,int endTo);
+int * generateRandomArray(int startFrom,int endTo);
 
 int getARandomNumberFromTheList(int * list);
 
@@ -15,3 +15,5 @@ int getARandomNumber(int size);
 
 
 int * generateOddEvenValues(int numberOfElem,bool Odd);
+
+bool checkIfSorted(int * list,int size);

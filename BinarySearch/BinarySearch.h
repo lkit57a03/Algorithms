@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "../Utility/Utility.h"
 #define SIZE 100
 

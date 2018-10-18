@@ -2,21 +2,48 @@
 #include "../MergeSort/MergeSort.h"
 int main(){
     int size = 100;
-    int * OddArr = generateOddEvenValues(size,true);
-    int * EvenArr= generateOddEvenValues(size,false);
-    int * OddEvenArr = malloc(2 * SIZE * sizeof(int));
-    printAllElem(OddArr,SIZE);
-    printAllElem(EvenArr,SIZE);
-
-    for(int i = 0; i < size * 2; i++)
+    int * OddArray = generateOddEvenValues(size,true);
+    int * EvenArray= generateOddEvenValues(size,false);
+    int * OddAndEvenArray = malloc(sizeof(int) * size * 2);
+    
+    for(int i = 0; i <= size; i++)
     {
-        if(i < size){
-            OddEvenArr[i] = OddArr[i];
-        }else {
-            OddEvenArr[i] = EvenArr[i % size]; 
-        }
+        OddAndEvenArray[i] = OddArray[i];
     }
-    printAllElem(OddEvenArr,SIZE * 2);
-    merge(OddEvenArr,0,size-1,size *   2);
-    printAllElem(OddEvenArr,size * 2);
+    
+    for(int i = size + 1, k = 0; i <= size * 2; i++, k++)
+    {
+        OddAndEvenArray[i] = EvenArray[k];
+    }
+    checkIfSorted(OddAndEvenArray,size * 2);
+    merge(OddAndEvenArray,0,size,size *   2);
+    checkIfSorted(OddAndEvenArray,size * 2);
 }
+
+/*#include "../Utility/Utility.h"
+#include "../MergeSort/MergeSort.h"
+
+int main(){
+    int size = 100;
+    int * OddArray = generateOddEvenValues(size,true);
+    int * EvenArray= generateOddEvenValues(size,false);
+    int * OddAndEvenArray = malloc(sizeof(int) * size * 2);
+    
+    for(int i = 0; i <= size; i++)
+    {
+        OddAndEvenArray[i] = OddArray[i];
+    }
+    
+    for(int i = size + 1, k = 0; i <= size * 2; i++, k++)
+    {
+        OddAndEvenArray[i] = EvenArray[k];
+    }
+    
+    
+    
+    printf("\nODD And Even ARRAY\n");
+    printAllElem(OddAndEvenArray,size * 2);
+    merge(OddAndEvenArray,0,size - 1,size * 2);
+    printAllElem(OddAndEvenArray,size * 2);
+    
+}*/

@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "../Utility/Utility.h"
 #define SIZE 100
 
@@ -6,16 +5,16 @@ int main(int argv,char** argc){
 // Linear Search
 int j , elem;
     int * list = generateRandomArray(1,SIZE);
-    for (int i = 0; i < SIZE;i++){
-        //Sorted
+    
+    for (int i = 0; i <= SIZE;i++){
+        elem = list[i];
         j = i - 1;
-
-        while(list[i] < list[j]){
-            swap(list,i,j);
-            i = j;
-            j--;
+        while(j >= 0 && list[j] > elem){
+            list[j + 1] = list[j];
+            j = j-1;
         }
-    }
-    printAllElem(list);
+    list[j + 1] = elem;
+    }    
+    printAllElem(list,SIZE);
     return 0;
 }

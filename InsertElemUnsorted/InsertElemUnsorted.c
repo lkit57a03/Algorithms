@@ -1,6 +1,6 @@
 #include"../Utility/Utility.h"
 
-int * removeElem(int * arr,int index,int elem,int * SIZE){
+int * AddElem(int * arr,int index,int elem,int * SIZE){
     int * tempArr = realloc(arr,(*SIZE + *SIZE/4) * sizeof(int));
     for(int i = 0; i < *SIZE; i++)
     {
@@ -18,5 +18,5 @@ int main(){
     int *arr = generateRandomArray(0,SIZE);
     int index = getARandomNumber(SIZE);
     int elem = getARandomNumber(time(NULL));
-    arr = removeElem(arr,index,elem,&SIZE);   
+    arr = AddElem(arr,index,elem,&SIZE);   
 }

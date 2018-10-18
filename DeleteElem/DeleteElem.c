@@ -14,4 +14,5 @@ int main(){
     int randomVar = getARandomNumberFromTheList(arr);
     qsort(arr,size,sizeof(int),comparator);
     int pos = BinarySearch(0,size,randomVar,arr);
+    removeElem(randomVar,arr,size);
 }

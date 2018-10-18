@@ -20,7 +20,7 @@ void printAllElem(int * list,int numOfElement){
         printf("Please Enter the Size of the Element.");
         return;
     }
-    for(int i = 0; i < numOfElement;i++){
+    for(int i = 0; i <= numOfElement;i++){
         printf("\n%d,%d",i,list[i]);
     }   
 }
@@ -51,16 +51,28 @@ int * generateOddEvenValues(int numberOfElem,bool Odd){
     int * arr = malloc(numberOfElem * sizeof(int));
     if(Odd == true){
         int k = 1;
-        for(int i = 0;i < numberOfElem;i++){
+        for(int i = 0;i <= numberOfElem;i++){
             arr[i] = k;
             k += 2;
         }
     }else {
-        int k = 2;
-        for(int i = 0;i < numberOfElem;i++){
+        int k = 0;
+        for(int i = 0;i <= numberOfElem;i++){
             arr[i] = k;
             k += 2;
         }
     }
     return arr;
+}
+
+
+bool checkIfSorted(int * list,int size){
+    for(int i = 0;i < size;i++){
+        if(list[i] > list[i + 1]){
+            printf("The Array is not Sorted.");
+            return false;
+        }
+    }
+    printf("The Array is Sorted.");
+    return true;
 }

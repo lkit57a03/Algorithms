@@ -18,19 +18,17 @@ int partition(int* list,int start,int end){
 void QuickSort(int * list, int start,int end){
     if(start < end){
         int piv_pos = partition(list,start,end);
-        QuickSort(list,start,piv_pos - 1);
+        QuickSort(list,start,piv_pos);
         QuickSort(list,piv_pos + 1, end);
     }
 }
 
 int main(int argv,char** argc){
-// Linear Search
-    int flag = 1;
-    int * list = generateRandomArray(1,SIZE);
-    printAllElem(list);
-    printf("\nSorted:\n");
-    QuickSort(list,0,SIZE);
-    printAllElem(list);
+
+    int * list = generateRandomArray(0,SIZE);
+    checkIfSorted(list,SIZE);
+    QuickSort(list,0,SIZE + 1);
+    checkIfSorted(list,SIZE);
     return 0;
 }
 

@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "../Utility/Utility.h"
 #define SIZE 100
 
@@ -6,7 +5,7 @@ int main(int argv,char** argc){
 // Linear Search
     int flag = 1;
     int * list = generateRandomArray(1,SIZE);
-    printAllElem(list);
+    printAllElem(list,SIZE);
 
     while(flag == 1){
         flag = -1;
@@ -18,6 +17,6 @@ int main(int argv,char** argc){
         }
     }
 
-    printAllElem(list);
+    printAllElem(list,SIZE);
     return 0;
 }
