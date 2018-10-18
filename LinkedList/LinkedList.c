@@ -10,7 +10,7 @@ Node * createNode(int val){
 
 Node * LLinit(int val){
     Node * node = createNode(val);
-    node->data = val;
+   // node->data = val;
     head = node;
     tail = NULL;
     return node;
@@ -20,14 +20,14 @@ Node * insertAtHead(int val){
     Node * tempNode;
     if(head == NULL){
         tempNode = LLinit(val);
-        tempNode->next = NULL;
-        head = tempNode;
+        /*tempNode->next = NULL;
+        head = tempNode;*/
     }else{
         tempNode = createNode(val);
         tempNode->next = head;
         if(head->next == NULL){
             tail = head;
-            tail->next = NULL;
+            //tail->next = NULL;
         }
         head = tempNode;
     }
@@ -38,12 +38,12 @@ Node * insertAtTail(int val){
     Node * tempNode;
 
     if(head == NULL){
-        tempNode = createNode(val);
-        head = tempNode;
+        tempNode = LLinit(val);
+        // head = tempNode;
         return head;
     }else if(tail == NULL){
         tempNode = createNode(val);
-        tempNode->next = NULL;
+        //tempNode->next = NULL;
         head->next = tempNode;
         tail = tempNode;
         return tempNode;
@@ -55,25 +55,28 @@ Node * insertAtTail(int val){
         }
         tail->next = tailNode;
         tail = tailNode;
-        return tempNode;
+        return tail;
     }
-}void printLL(){
+}
+void printLL(){
     Node * tempNode;
     tempNode = head;
     while(tempNode->next != NULL){
         printf("%d ->",tempNode->data);
         tempNode = tempNode->next;
     }
-    printf("%d -> \n",tempNode->data);
+    printf("%d \n",tempNode->data);
 }
 
 
 Node * insertInMiddle(int val,int pos){
-    Node * middleNode = createNode(val);
+    Node * middleNode;
     if(head == NULL || tail == NULL){
         printf("No ELement in LL to insert between");
-        return NULL;
+        middleNode = LLinit(val);
+        return middleNode;
     }else{
+        middleNode = createNode(val);
         Node * tempNode;
         tempNode = head;
         while(tempNode->next->data != pos){
@@ -87,7 +90,7 @@ Node * insertInMiddle(int val,int pos){
 
 
 Node * deleteHead(){
-Node * tempNode;
+    Node * tempNode;
     if(head==NULL){
         printf("LL is Empty");
         return NULL;
@@ -103,8 +106,7 @@ Node * deleteTail(){
     Node * tempNode;
     if(tail == NULL && head==NULL){
         return NULL;
-    }else if (tail == NULL)
-    {
+    }else if (tail == NULL){
         deleteHead();
     }else{
         tempNode = head;

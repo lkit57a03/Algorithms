@@ -17,6 +17,10 @@ int pop(){
     if(head == NULL){
         printf("Stack is Empty");
         return 0;
+    }else if(tail == NULL){
+        int data = head->data;
+        deleteHead();
+        return head;
     }else{
         int data = tail->data;
         deleteTail();
@@ -28,7 +32,7 @@ int peek(){
     if(tail == NULL && head == NULL){
         printf("Stack is Empty");
         return 0;   
-    }else if(head != NULL){
+    }else if(tail == NULL){
         return head->data;
     }else{
         return tail->data;

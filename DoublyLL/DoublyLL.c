@@ -16,9 +16,10 @@ Node * init(int val){
 }
 
 Node * insertAtHead(int val){
-    Node * tempNode = createNode(val);    
+    Node * tempNode;    
     if(head == NULL) return init(val);
     else{
+        tempNode = createNode(val);
         tempNode->next = head;
         if(tail == NULL){
             tail = head;
@@ -49,7 +50,7 @@ Node * insertInMiddle(int val,int pos){
     Node * tempNode = head;    
     if(head == NULL || tail == NULL){
         printf("No ELement in LL to insert between");
-        return NULL;
+        return init(val);
     }else{
         Node * tailNode = createNode(val);
         
@@ -57,7 +58,9 @@ Node * insertInMiddle(int val,int pos){
             tempNode = tempNode->next;
         }
         tempNode->previous->next = tailNode;
+        tailNode->previous       = tempNode->previous;
         tailNode->next           = tempNode;
+        tempNode->previous       = tailNode;
     }
 }
 
@@ -95,6 +98,7 @@ Node * deleteFromAnyWhere(int data){
     }
     toDelete = tempNode;
     tempNode->previous->next = tempNode->next;
+    tempNode->next->previous = tempNode->previous;
     free(toDelete);
 }
 
@@ -105,5 +109,5 @@ void printLL(){
         printf("%d ->",tempNode->data);
         tempNode = tempNode->next;
     }
-    printf("%d -> \n",tempNode->data);
+    printf("%d \n",tempNode->data);
 }
