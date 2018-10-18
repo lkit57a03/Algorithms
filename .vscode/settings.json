@@ -3,6 +3,8 @@
         "utility.h": "c",
         "queue.h": "c",
         "circularqueue.h": "c",
-        "mergesort.h": "c"
+        "mergesort.h": "c",
+        "stack.h": "c",
+        "queuell.h": "c"
     }
 }

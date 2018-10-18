@@ -8,7 +8,7 @@ Node * createNode(int val){
     return node;
 }
 
-Node * init(int val){
+Node * LLinit(int val){
     Node * node = createNode(val);
     node->data = val;
     head = node;
@@ -19,7 +19,7 @@ Node * init(int val){
 Node * insertAtHead(int val){
     Node * tempNode;
     if(head == NULL){
-        tempNode = init(val);
+        tempNode = LLinit(val);
         tempNode->next = NULL;
         head = tempNode;
     }else{
