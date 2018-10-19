@@ -59,6 +59,9 @@ Node * insertAtTail(int val){
     }
 }
 void printLL(){
+    if(head == NULL){
+        return;
+    }
     Node * tempNode;
     tempNode = head;
     while(tempNode->next != NULL){
@@ -96,12 +99,20 @@ Node * deleteHead(){
         return NULL;
     }else{
         tempNode = head;
-        head = head->next;
-        free(tempNode);
-        return head;
+        if(head->next == NULL){
+            head = NULL;
+            tail = NULL;
+            return NULL;
+        }else{
+            head = head->next;
+            free(tempNode);
+            if(head == tail){
+                tail = NULL;
+            }
+            return head;
+        }
     }
 }
-
 Node * deleteTail(){
     Node * tempNode;
     if(tail == NULL && head==NULL){
@@ -113,7 +124,7 @@ Node * deleteTail(){
         while(tempNode->next->next != NULL){
             tempNode = tempNode->next;
         }
-        if(tempNode == tail){
+        if(head->next == tempNode){
             tail = NULL;
         }else{
             free(tail);

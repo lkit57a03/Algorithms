@@ -1,4 +1,4 @@
-#include"StackLL.h"
+#include"NodeStack.h"
 
 Stack * initStack(int val){
     return LLinit(val);
@@ -20,7 +20,7 @@ int pop(){
     }else if(tail == NULL){
         int data = head->data;
         deleteHead();
-        return data;
+        return head;
     }else{
         int data = tail->data;
         deleteTail();

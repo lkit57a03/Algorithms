@@ -5,4 +5,7 @@ int main(){
     push(18);
     printf("\n%d\n",pop());
     printf("\n%d\n",pop());
+    printf("\n%d\n",pop());
+    printf("\n%d\n",pop());
+    printf("\n%d\n",pop());
 }

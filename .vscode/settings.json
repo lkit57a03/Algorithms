@@ -5,6 +5,9 @@
         "circularqueue.h": "c",
         "mergesort.h": "c",
         "stack.h": "c",
-        "queuell.h": "c"
+        "queuell.h": "c",
+        "stdio.h": "c",
+        "stackll.h": "c",
+        "linkedlist.h": "c"
     }
 }

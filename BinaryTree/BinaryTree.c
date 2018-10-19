@@ -1,16 +1,4 @@
-#include "../Utility/Utility.h"
-#include<stdbool.h>
-
-struct Node{
-    int Value;
-    struct Node * left_child;
-    struct Node * right_child;
-    struct Node * parent;
-};
-struct Node * Root;
-int left_height;
-int right_height;
-void insert(int Value);
+#include "NodeStack/NodeStack.h"
 
 struct Node * initialize(int Value){
     Root = NULL;
@@ -19,15 +7,6 @@ struct Node * initialize(int Value){
     }
     return Root;
 }
-
-void _print_tree(struct Node *pNode);
-
-int _height(struct Node *pNode, int current_height);
-
-
-struct Node * _search(struct Node *pNode, int value);
-
-bool _delete_node(struct Node *pNode);
 
 void _insert(int value, struct Node *pNode) {
     if (value < pNode->Value){
@@ -51,27 +30,66 @@ void _insert(int value, struct Node *pNode) {
     }
 }
 
-void print_tree(){
-    if (Root != NULL){
-        _print_tree(Root);
-    }else{
-        printf("Root is empty");
-    }
-}
-
-void _print_tree(struct Node *pNode) {
-    if(pNode != NULL){
-        _print_tree(pNode->left_child);
-        printf("- %d -",pNode->Value);
-        _print_tree(pNode->right_child);
-    }
-}
-
 void insert(int Value){
     if(Root == NULL){
         Root = (struct Node *)malloc(sizeof(struct Node));
         Root->Value = Value;
     } else _insert(Value,Root);
+}
+
+void _print_tree_inorder(struct Node *pNode,enum print_type type) {
+    if(pNode != NULL){
+        if(type == recursive){    
+            _print_tree_inorder(pNode->left_child,recursive);
+            printf("- %d -",pNode->Value);
+            _print_tree_inorder(pNode->right_child,recursive);
+            
+        }
+        else if (type == iterative)
+        {
+            Stack stack = init();
+        }
+        
+    }
+}
+void _print_tree_preorder(struct Node *pNode,enum print_type type) {
+    if(pNode != NULL){
+        printf("- %d -",pNode->Value);
+        _print_tree_preorder(pNode->left_child);
+        _print_tree_preorder(pNode->right_child);
+    }
+}
+void _print_tree_postorder(struct Node *pNode,enum print_type type) {
+    if(pNode != NULL){
+        _print_tree_postorder(pNode->left_child);
+        _print_tree_postorder(pNode->right_child);
+        printf("- %d -",pNode->Value);
+    }
+}
+
+void print_tree(enum  print_order whichOrder,enum print_type type){
+    if (Root != NULL){
+        if (type == recursive){
+            if(whichOrder == print_tree_preorder){
+                _print_tree_preorder(Root);
+            }else if(whichOrder == print_tree_inorder){
+                _print_tree_inorder(Root);
+            }else{
+                _print_tree_postorder(Root);
+            }
+        }else if(type == iterative){
+
+        }
+    }else{
+        printf("Root is empty");
+    }
+}
+int _height(struct Node *pNode, int current_height) {
+    if (pNode == NULL) return current_height;
+    left_height = _height(pNode->left_child,current_height + 1);
+    right_height=_height(pNode->right_child,current_height + 1);
+
+    return left_height > right_height ? left_height : right_height;
 }
 
 struct Node * fill_tree(struct Node * pNode,int num_of_elem){
@@ -88,19 +106,8 @@ int height(struct Node * pNode){
     }else return 0;
 }
 
-int _height(struct Node *pNode, int current_height) {
-    if (pNode == NULL) return current_height;
-    left_height = _height(pNode->left_child,current_height + 1);
-    right_height=_height(pNode->right_child,current_height + 1);
 
-    return left_height > right_height ? left_height : right_height;
-}
 
-struct Node * search(int value){
-    if (Root != NULL){
-        return _search(Root,value);
-    } else return NULL;
-}
 
 struct Node * _search(struct Node *pNode, int value) {
     if(value == pNode->Value) return pNode;
@@ -108,6 +115,12 @@ struct Node * _search(struct Node *pNode, int value) {
         _search(pNode->left_child,value);
     }else if (value > pNode->Value && pNode->right_child != NULL){
         _search(pNode->right_child,value);
+    } else return NULL;
+}
+
+struct Node * search(int value){
+    if (Root != NULL){
+        return _search(Root,value);
     } else return NULL;
 }
 
@@ -119,6 +132,7 @@ struct Node * min_value_node(struct Node * pNode){
     }
     return current;
 }
+
 int number_of_children(struct Node * pNode){
     int num_of_children = 0;
     if (pNode->left_child != NULL) num_of_children++;
@@ -158,22 +172,7 @@ bool _delete_node(struct Node *pNode) {
     return 0;
 }
 
-delete_value(int value){
+bool delete_value(int value){
     return _delete_node(search(value));
 }
 
-int main(int argv,char ** argc){
-    int d = 1;
-    struct Node * temp_Root = initialize(0);
-    temp_Root = fill_tree(temp_Root,1000);
-    print_tree();
-    printf("\n Height is : %d\n",height(temp_Root));
-
-    while (d != 0){
-        scanf("%d",&d);
-        delete_value(d);
-
-        print_tree();
-    }
-    return 0;
-}

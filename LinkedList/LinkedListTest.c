@@ -8,8 +8,11 @@ int main(){
     printLL();
     deleteHead();
     printLL();
-    deleteTail();
+    deleteHead();
     printLL();
+    deleteHead();
+    printLL();
+    deleteHead();
     insertAtTail(7);
     insertAtTail(4);
     insertAtTail(2);
@@ -22,6 +25,19 @@ printLL();
     insertAtTail(66);
 printLL();
 deleteFromAnyWhere(21);
+printLL();
+
+    deleteTail();
+printLL();
+    deleteTail();
+printLL();
+    deleteTail();
+printLL();
+    deleteTail();
+printLL();
+    deleteTail();
+printLL();
+    deleteTail();
 printLL();
 
 }
