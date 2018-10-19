@@ -1,40 +1,39 @@
 #include "../Utility/Utility.h"
-#include<stdbool.h>
 
 
-struct Node{
+typedef struct BTNode{
     int Value;
-    struct Node * left_child;
-    struct Node * right_child;
-    struct Node * parent;
-};
+    struct BTNode * left_child;
+    struct BTNode * right_child;
+    struct BTNode * parent;
+}BTNode;
 
 enum print_order{print_tree_preorder = 0,print_tree_inorder= 1,print_tree_postorder = 2};
 enum print_type{recursive = 0,iterative = 1};
 
-struct Node * Root;
+BTNode * Root;
 int left_height;
 int right_height;
 void insert(int Value);
 
 
-struct Node * initialize(int Value);
+BTNode * initialize(int Value);
 
 //void print_tree(enum  print_order);
 
 bool delete_value(int value);
 
-struct Node * min_value_node(struct Node * pNode);
+BTNode * min_value_node(BTNode * pNode);
 
-struct Node * search(int value);
+BTNode * search(int value);
 
-int height(struct Node * pNode);
+int height(BTNode * pNode);
 
-struct Node * fill_tree(struct Node * pNode,int num_of_elem);
+BTNode * fill_tree(BTNode * pNode,int num_of_elem);
 
 void insert(int Value);
 
 void print_tree(enum  print_order whichOrder,enum print_type type);
 
-int number_of_children(struct Node * pNode);
+int number_of_children(BTNode * pNode);
 

@@ -1,44 +1,45 @@
 #include"NodeStack.h"
 
-Stack * initStack(int val){
-    return LLinit(val);
+struct NodeStack * init(int numOfElem){
+    struct Nodestack * nodeStack = (struct Nodestack *)malloc(sizeof(struct Nodestack));
+    nodeStack->stackArr = (BTNode **)malloc(sizeof(BTNode *) * numOfElem);
+    nodeStack->tos      = -1;
+    nodeStack->numOfElem = numOfElem;
+    return nodeStack;
 }
 
-bool push(int val){
-    if(head == NULL){
-        LLinit(val);
+bool push(struct Nodestack * nodeStack,BTNode * node){
+    if(nodeStack->tos == nodeStack->numOfElem){
+        printf("The Stack is Full");
     }else{
-        insertAtTail(val);
+        nodeStack->tos += 1;
+        nodeStack->stackArr[nodeStack->tos] = node;
         return true;
     }
 }
 
-int pop(){
-    if(head == NULL){
-        printf("Stack is Empty");
-        return 0;
-    }else if(tail == NULL){
-        int data = head->data;
-        deleteHead();
-        return head;
+BTNode * pop(struct Nodestack *nodeStack){
+    if(nodeStack->tos == -1){
+        printf("\nStack is Empty\n");
+        return NULL;
     }else{
-        int data = tail->data;
-        deleteTail();
-        return data;
+        nodeStack->tos -= 1;
+        return nodeStack->stackArr[nodeStack->tos + 1];
     }
 }
 
-int peek(){
-    if(tail == NULL && head == NULL){
-        printf("Stack is Empty");
-        return 0;   
-    }else if(tail == NULL){
-        return head->data;
+BTNode * peek(struct Nodestack * nodeStack){
+    if(nodeStack->tos == -1){
+        printf("\nStack is Empty\n");
+        return NULL;
     }else{
-        return tail->data;
+        return nodeStack->stackArr[nodeStack->tos];
     }
 }
+bool isFull(struct Nodestack * nodeStack){
+    return nodeStack->tos == nodeStack->numOfElem;
+}
 
-bool isEmpty(){
-    return head == NULL;
+bool isEmpty(struct Nodestack * nodeStack){
+    return nodeStack->tos == -1;
 }

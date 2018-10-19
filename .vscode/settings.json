@@ -8,6 +8,8 @@
         "queuell.h": "c",
         "stdio.h": "c",
         "stackll.h": "c",
-        "linkedlist.h": "c"
+        "linkedlist.h": "c",
+        "nodestack.h": "c",
+        "binarytree.h": "c"
     }
 }

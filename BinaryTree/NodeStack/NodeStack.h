@@ -1,10 +1,13 @@
 #include"../BinaryTree.h"
-#include "../../LinkedList/LinkedList.h"
 
-typedef Node Stack;
+typedef struct Nodestack{
+    BTNode ** stackArr;
+    int tos;
+    int numOfElem;
+}NodeStack;
 
-Stack * initStack(int val);
-bool push(int val);
-int pop();
-int peek();
-bool isEmpty();
+struct NodeStack * init(int numOfElem);
+bool push(struct Nodestack * nodeStack,BTNode * node);
+BTNode * pop(struct Nodestack *nodeStack);
+BTNode * peek(struct Nodestack * nodeStack);
+bool isEmpty(struct Nodestack * nodeStack);
